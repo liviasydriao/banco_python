@@ -70,19 +70,19 @@ def criar_cc(cpf,usuarios,num_conta,contas):
     
     if usuario is None:
         print("Usuário não encontrado. Crie um usuário primeiro.")
-        return contas
+        return contas, num_conta
     
     for conta in contas:
         if num_conta == conta['num_conta']:
             print("Conta corrente já existe. Operação inválida.")
             return contas
-    
+    num_conta += 1
     contas.append({
         'agencia': '0001',
         'num_conta': num_conta,
         'usuario': usuario['nome']  # Aqui pegamos apenas o nome do usuário para listar
     })
-    return contas
+    return contas, num_conta
 
 def listar_contas(contas):
     print("\n================ CONTAS CORRENTES ================")
@@ -109,6 +109,7 @@ numero_saques = 0
 LIMITE_SAQUES = 3
 usuarios = []
 contas = []
+num_conta = 0
 
 while True:
     opcao = input(menu)
@@ -133,10 +134,10 @@ while True:
         usuarios = criar_usuario(nome,cpf,endereco,data,usuarios)
         
     elif opcao == "cc":
-        num_conta = int(input("Informe o numero da conta corrente: "))
+        
         cpf = int(input("Informe seu cpf: "))
         
-        contas = criar_cc(cpf,usuarios,num_conta,contas)     
+        contas, num_conta = criar_cc(cpf,usuarios,num_conta,contas)     
         
     elif opcao == "l":
         listar_contas(contas)
