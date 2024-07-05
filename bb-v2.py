@@ -72,11 +72,12 @@ def criar_cc(cpf,usuarios,num_conta,contas):
         print("Usuário não encontrado. Crie um usuário primeiro.")
         return contas, num_conta
     
+    num_conta += 1
     for conta in contas:
         if num_conta == conta['num_conta']:
             print("Conta corrente já existe. Operação inválida.")
             return contas
-    num_conta += 1
+    
     contas.append({
         'agencia': '0001',
         'num_conta': num_conta,
