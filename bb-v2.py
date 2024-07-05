@@ -85,8 +85,10 @@ def criar_cc(cpf,usuarios,num_conta,contas):
     return contas
 
 def listar_contas(contas):
-     for conta in contas:
-         print(f"o usuário {conta['usuario']} tem conta corrente de número {conta['num_conta']} e agência {conta['agencia']}\n")
+    print("\n================ CONTAS CORRENTES ================")
+    for conta in contas:
+        print(f"* O usuário {conta['usuario']} tem conta corrente de número {conta['num_conta']} e agência {conta['agencia']}\n")
+    print("==================================================")
 
 menu = """
 
